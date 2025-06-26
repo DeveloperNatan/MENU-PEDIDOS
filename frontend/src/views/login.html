@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acessar Admin</title>
+    <link rel="stylesheet" href="views/styles/output.css" />
+</head>
+
+<body class="h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white border border-black p-8 rounded-lg w-full max-w-md" id="Container">
+        <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+
+
+            Acessar Admin
+        </h1>
+        <form action="/login" method="post" class="space-y-4">
+            <div>
+                <label for="Usuario" class="block text-sm font-medium text-gray-900">Usuário</label>
+                <input type="text" name="InputUser" id="InputUser"
+                    class="mt-1 w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+                <label for="Senha" class="block text-sm font-medium text-gray-900">Senha</label>
+                <input type="password" name="InputSenha" id="InputSenha"
+                    class="mt-1 w-full px-4 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div class="my-2">
+                <span id="WarnForm" class="text-red-500 hidden">⚠️Usuario ou senha estão incorretos!</span>
+            </div>
+            <button type="submit" name="SubmitAdmin" id="SubmitAdmin"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
+                Entrar
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

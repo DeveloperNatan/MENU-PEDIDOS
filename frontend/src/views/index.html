@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="views/styles/output.css" />
+  <script src="../js/index.js" defer></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  <title>Editar</title>
+  <link rel="icon" href="views/assets/admin.ico" type="image/x-icon">
+</head>
+
+<body class="bg-gray-200 min-h-screen my-4 mx-2 lg:mx-16 items-center justify-center">
+  <nav class="flex items-center w-full p-2 bg-gray-700 rounded-sm my-2 gap-2">
+    <div class="flex justify-start bg-gray-200 p-1 rounded-sm shadow cursor-pointer">
+      <button id="menu-inicial" class="cursor-pointer" name="button-home">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+      </button>
+    </div>
+    <div class="ml-auto">
+      <div>
+        <button id="button-novo-item" type="button"
+          class="bg-gray-200 text-gray-800 p-1 rounded-sm shadow hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 cursor-pointer">
+          Adicionar Item
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="grid grid-cols-4 w-full font-light bg-gray-600 rounded p-2 text-white text-center">
+    <span>NOME</span>
+    <span>PREÇO</span>
+    <span>CATEGORIA</span>
+    <span>AÇÕES</span>
+  </div>
+
+  <div id="menu-container" class="w-full font-[Arial]">
+    <h1 class="p-1">Burguer</h1>
+    <div id="DivBurguer"></div>
+    <h1 class="p-1">Bebidas</h1>
+    <div id="DivBebidas"></div>
+    <h1 class="p-1">Combo</h1>
+    <div id="DivCombo"></div>
+    <h1 class="p-1">Porções</h1>
+    <div id="DivPorcao"></div>
+  </div>
+
+  <!-- MODAL CRIACAO -->
+  <div class="hidden" id="ModalCreate"></div>
+  <!-- MODAL EDIT -->
+  <div class="hidden" id="ModalEdit"></div>
+</body>
+
+</html>
