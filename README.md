@@ -45,4 +45,4 @@ Este é um projeto monolítico, ou seja, o frontend e o backend estão no mesmo 
 
 🌐 Acesse o Site
 
-Menu Pedidos Online:https://menu-pedidos.onrender.com/
+https://menu-pedidos.onrender.com/
