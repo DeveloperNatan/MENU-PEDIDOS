@@ -47,5 +47,6 @@ Este é um **projeto monolítico**, ou seja, o frontend e o backend estão no me
 ## ⚠️ Observação
 Este projeto está hospedado em uma plataforma gratuita (Render Free Tier).  
 Por isso, o servidor pode **resetar automaticamente** após algum tempo de inatividade, o que pode causar demora na primeira requisição ou reinício temporário da aplicação.  
+Principalmente com inserções de imagens que após o servidor ficar inativo, elas são resetadas
 Isso é um comportamento normal da plataforma e não indica erro no projeto.
 
