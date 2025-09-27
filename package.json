@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node backend/server/server.js",
     "style": "npx @tailwindcss/cli -i frontend/src/views/styles/input.css -o frontend/src/views/styles/output.css --watch",
+    "deploy": "npx prisma deploy --schema=backend/data/prisma/schema.prisma",
     "generate": "npx prisma generate --schema=backend/data/prisma/schema.prisma"
   },
   "author": "",

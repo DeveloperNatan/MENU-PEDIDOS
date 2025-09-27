@@ -5,6 +5,7 @@ const dir = path.join(__dirname, "../../../frontend/src/views/");
 const Service = require("../service/service");
 const multer = require("multer");
 const crypto = require("crypto");
+const { waitForDebugger } = require("inspector");
 
 const id = crypto.randomBytes(2).toString("hex");
 
@@ -42,10 +43,30 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(dir, "login.html"));
 });
 
+router.get("/notfound", (req, res) => {
+  res.sendFile(path.join(dir, "notfound.html"));
+});
+
+router.get("/error", (req, res) => {
+  res.sendFile(path.join(dir, "error.html"));
+});
+
+router.get("/api/produtos/:id", async (req, res) => {
+  await Service.EncontarUm(req, res);
+});
+
+router.get("/api/produtos/", async (req, res) => {
+  await Service.EncontarTodos(req, res);
+});
+
+router.get("/admin", authMiddleware, (req, res) => {
+  res.sendFile(path.join(dir, "index.html"));
+});
+
 router.post("/login", (req, res) => {
   const { InputSenha, InputUser } = req.body;
 
-  if (InputUser === "admin" && InputSenha === "12345") {
+  if (InputUser === "admin" && InputSenha === "1234") {
     req.session.user = "admin";
     res.redirect("/admin");
   } else {
@@ -53,15 +74,11 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.get("/admin", authMiddleware, (req, res) => {
-  res.sendFile(path.join(dir, "index.html"));
-});
-
 router.post("/cadastro", upload.single("ImagemURLedit"), async (req, res) => {
   await Service.Cadastro(req, res);
 });
 
-// verificar 13/06
+// verificar
 router.post("/edit", upload.single("ImagemURLedit"), async (req, res) => {
   await Service.Edit(req, res);
 });

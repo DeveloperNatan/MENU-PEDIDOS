@@ -2,7 +2,9 @@
 // sendo necessario a importacao do prisma
 // criacao de funcoes usando os features do prisma ou se caso fosse SQL na mao
 // realizar tratamento de erros com codigos
+const { parse } = require("path");
 const prisma = require("../../data/prisma");
+const { resourceLimits } = require("worker_threads");
 // criar funcoes
 
 // cadastro
@@ -10,7 +12,6 @@ exports.Cadastro = async function (req, res) {
   const { nome, descricao, categoria } = req.body;
   const preco = parseFloat(req.body.preco);
   const imagemurl = req.file ? `/assets/${req.file.filename}` : null;
-  console.log(req.body);
   try {
     await prisma.menu.create({
       data: {
@@ -24,6 +25,29 @@ exports.Cadastro = async function (req, res) {
     res.status(201).redirect("/admin");
   } catch (error) {
     res.status(400).json({ error: "Erro ao criar", details: error.message });
+  }
+};
+
+exports.EncontarUm = async function (req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    const result = await prisma.menu.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(404).redirect("/notfound");
+  }
+};
+
+exports.EncontarTodos = async function (req, res) {
+  try {
+    const result = await prisma.menu.findMany();
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(404).redirect("/notfound");
   }
 };
 
@@ -51,7 +75,7 @@ exports.Edit = async function (req, res) {
     });
     res.status(201).redirect("/admin");
   } catch (error) {
-    res.status(400).json({ error: "Erro ao editar", details: error.message });
+    res.status(400).redirect("/error");
   }
 };
 

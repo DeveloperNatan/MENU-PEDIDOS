@@ -13,10 +13,9 @@ const DivPorcao = document.getElementById("DivPorcao");
 // listagem
 async function FetchApiMenu() {
   try {
-    const url = "https://menu-pedidos-api.onrender.com/api/menu";
+    const url = "/api/produtos";
     const response = await fetch(url);
 
-    console.log(response);
     if (!response.ok) {
       throw new Error(`API resquest failed, status: ${response.status}`);
     }
@@ -65,7 +64,7 @@ async function FetchApiMenu() {
         case "Combo":
           DivCombo.appendChild(menuItens);
           break;
-        case "Porções":
+        case "Porcoes":
           DivPorcao.appendChild(menuItens);
           break;
       }
@@ -115,7 +114,7 @@ async function ModalCreate() {
                     <option value="Burguer">Burguer</option>
                     <option value="Bebidas">Bebidas</option>
                     <option value="Combo">Combo</option>
-                    <option value="Porções">Porções</option>
+                    <option value="Porcoes">Porções</option>
                 </select>
             </div>
             <div>
@@ -204,7 +203,7 @@ async function ModalCreate() {
 // Modal edit
 async function ModalEdit(id) {
   try {
-    const url = `https://menu-pedidos-api.onrender.com/api/menu/${id}`;
+    const url = `/api/produtos/${id}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`API request failed, status:${response.status}`);
@@ -233,30 +232,46 @@ async function ModalEdit(id) {
         </div>
         <div>
           <label for="description" class="block text-sm font-medium text-gray-700">Descrição</label>
-          <input type="text" name="descricao" id="menu-description" value="${menu.descricao}"
+          <input type="text" name="descricao" id="menu-description" value="${
+            menu.descricao
+          }"
             class="mt-1 p-2 block w-full rounded-md shadow border border-black bg-white text-gray-800 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
         </div>
         <div>
           <label for="price" class="block text-sm font-medium text-gray-700">Preço</label>
-          <input type="number" min="0" step="0.01" name="preco" id="menu-price" value="${menu.preco}"
+          <input type="number" min="0" step="0.01" name="preco" id="menu-price" value="${
+            menu.preco
+          }"
             class="mt-1 p-2 block w-full rounded-md shadow border border-black bg-white text-gray-800 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
         </div>
         <div>
           <label for="category" class="block text-sm font-medium text-gray-700">Categoria</label>
           <select name="categoria" id="menu-category"
             class="mt-1 p-2 block w-full rounded-md shadow border border-black bg-white text-gray-800 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-            <option value="Burguer">Burguer</option>
-            <option value="Bebidas">Bebidas</option>
-            <option value="Combo">Combo</option>
-            <option value="Porções">Porções</option>
+            <option ${
+              menu.categoria === "Burguer" ? "selected" : ""
+            } value="Burguer">Burguer</option>
+            <option ${
+              menu.categoria === "Bebidas" ? "selected" : ""
+            } value="Bebidas">Bebidas</option>
+            <option ${
+              menu.categoria === "Combo" ? "selected" : ""
+            } value="Combo">Combo</option>
+            <option ${
+              menu.categoria === "Porcoes" ? "selected" : ""
+            } value="Porcoes">Porções</option>
           </select>
         </div>
         <div>
           <label for="ImagemURL" class="block text-sm font-medium text-gray-700">Imagem</label>
           <input type="file" name="ImagemURLedit" id="ImagemURLedit" class="border p-1 rounded-sm w-full">
           <div id="Stylepreview" class="flex justify-center h-20 w-20 px-1 py-1">
-            <input type="text" name="ValueURL" class="hidden" value="${menu.imagemurl}">
-            <img id="ImagemURL" src="../views${menu.imagemurl}" alt="" class="w-3xs">
+            <input type="text" name="ValueURL" class="hidden" value="${
+              menu.imagemurl
+            }">
+            <img id="ImagemURL" src="../views${
+              menu.imagemurl
+            }" alt="" class="w-3xs">
           </div>
         </div>
         <div class="flex justify-center mt-2 space-x-2">

@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const session = require("express-session");
 
 dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(
@@ -25,4 +26,4 @@ app.use(express.json());
 
 app.use("/", require("./routes/routes"));
 
-app.listen(1000);
+app.listen(PORT);

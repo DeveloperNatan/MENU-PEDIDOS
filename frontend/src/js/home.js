@@ -18,7 +18,7 @@ let cart = [];
 async function FetchApiDisplayProducts() {
   try {
     // usando localhost para testes
-    const url = "https://menu-pedidos-api.onrender.com/api/menu";
+    const url = "/api/produtos";
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -74,7 +74,7 @@ async function FetchApiDisplayProducts() {
         case "Combo":
           menuCombos.appendChild(menuItens);
           break;
-        case "Porções":
+        case "Porcoes":
           menuPorcoes.appendChild(menuItens);
           break;
       }
@@ -321,7 +321,7 @@ function checkrestauranteopen() {
 
   if (hours > 15 && hours < 22) {
     return true;
-  } else if (hours === 18 && minutos >= 30) {
+  } else if (hours === 17 && minutos >= 30) {
     return true;
   } else if (hours === 22 && minutos === 0) {
     return true;
